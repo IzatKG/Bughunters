@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "8.4"
+    id "io.qameta.allure" version "2.11.2"
+}
+
+group = 'hunters'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+allure {
+    version = '2.24.0' // стабильная рабочая версия
+    autoconfigure = true
+    aspectjweaver = true
+}
+
+
+dependencies {
+    implementation platform('org.junit:junit-bom:5.9.1')
+    implementation 'org.junit.jupiter:junit-jupiter'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    implementation("org.projectlombok:lombok:1.18.24")
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5
+    implementation("io.qameta.allure:allure-junit5:2.28.1")
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation 'io.qameta.allure:allure-rest-assured:2.28.1'
+    implementation 'com.github.tomakehurst:wiremock-jre8:2.35.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+// Очистка папки allure-results перед тестами
+task cleanAllureResults(type: Delete) {
+    delete "$buildDir/allure-results"
+}
+
+// Убедись, что cleanAllureResults запускается перед тестами
+test.dependsOn cleanAllureResults
+
+test {
+    useJUnitPlatform()
+    // чтобы результаты писались в стандартную папку
+    systemProperty "allure.results.directory", "build/allure-results"
+}

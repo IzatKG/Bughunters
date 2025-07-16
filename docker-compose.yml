@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  wiremock:
+    image: wiremock/wiremock:3.3.1
+    container_name: wiremock
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings
+      - ./wiremock/__files:/home/wiremock/__files
+
+  autotests:
+    build:
+      context: .
+    container_name: test-runner
+    volumes:
+      - ./allure-results:/home/tests/allure-results
+      - ./build/reports/tests:/home/tests/build/reports/tests
+    environment:
+      - BASE_URL=http://wiremock:8080
+    depends_on:
+      - wiremock
+    command: gradle test
+
+
+
