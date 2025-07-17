@@ -36,4 +36,9 @@ public class CheckEnumsTest {
         persons.put("Rinat", 50);
         System.out.println(Practice2.filterPersonAge(persons));
     }
+
+    @Test
+    public  void testUrok(){
+        System.out.println("Uchim vetku");
+    }
 }
