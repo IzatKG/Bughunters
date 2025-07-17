@@ -24,5 +24,6 @@ public class BaseMain {
 
 
         System.out.println("Я Актан");
+        System.out.println("А когда не добавляли ");
     }
 }
