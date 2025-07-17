@@ -38,6 +38,7 @@ public class CheckEnumsTest {
     }
 
     @Test
+    @DisplayName("Test urok po vetku")
     public  void testUrok(){
         System.out.println("Uchim vetku");
     }
