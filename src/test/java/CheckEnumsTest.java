@@ -41,5 +41,6 @@ public class CheckEnumsTest {
     @DisplayName("Test urok po vetku")
     public  void testUrok(){
         System.out.println("Uchim vetku");
+        System.out.println("Sdelali novyiy stroku");
     }
 }
