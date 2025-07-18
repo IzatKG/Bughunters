@@ -1,6 +1,9 @@
 package collection;
 
+
+
 import java.util.*;
+
 
 public class Testirovanie {
     public static void main(String[] args) {
@@ -55,6 +58,29 @@ public class Testirovanie {
                 .toList();
         System.out.println(name5);
 
+
+        // Studenty po aktivnosti
+        Map<String, Boolean> aktiveStudents = new HashMap<>();
+        aktiveStudents.put("Akylbai", true);
+        aktiveStudents.put("Aktan", true);
+        aktiveStudents.put("Akyl", true);
+        aktiveStudents.put("Akylbek", true);
+        aktiveStudents.put("Aida", true);
+        aktiveStudents.put("Aijan", false);
+        aktiveStudents.put("Bakyt", false);
+        aktiveStudents.put("Bekjan", true);
+        aktiveStudents.put("Uulkan", true);
+        aktiveStudents.put("Sanjar", true);
+        aktiveStudents.put("Alina", false);
+        aktiveStudents.put("Oleg", false);
+        System.out.println(aktiveStudents);
+
+        // spisok aktivyh studentov
+        List<String> activeList = aktiveStudents.entrySet().stream()
+                .filter(entry -> entry.getValue())
+                .map(Map.Entry::getKey)
+                .toList();
+        System.out.println(activeList);
 
 
 
