@@ -14,6 +14,7 @@ public class CheckEnumsTest {
     public void checkDaysTest() {
         Day today = Day.FRIDAY;
         System.out.println(today);
+        System.out.println("Я Акыл");
     }
 
     @Test
