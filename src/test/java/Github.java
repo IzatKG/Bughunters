@@ -4,5 +4,7 @@ public class Github {
         System.out.println("--------------------");
         System.out.println("Line has been added");
         System.out.println("Work hard, play hard!!!");
+        System.out.println("Work hard, play hard!!!");
+        System.out.println("Work hard, play hard!!!");
     }
 }
