@@ -23,5 +23,7 @@ public class BaseMain {
         System.out.println(persons[persons.length-2]);
 
 
+        System.out.println("Я Актан");
+        System.out.println("А когда не добавляли ");
     }
 }
